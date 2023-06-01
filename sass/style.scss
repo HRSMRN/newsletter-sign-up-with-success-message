@@ -1,0 +1,234 @@
+@use "./variables" as *;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  border-style: none;
+}
+
+body {
+  font-family: $font-stack;
+  input:focus {
+    outline: none;
+  }
+}
+
+.hero {
+  &--illustration {
+    background: url("../../assets/images/illustration-sign-up-mobile.svg")
+      no-repeat;
+    background-size: contain;
+    height: 80vw;
+    background-position-x: center;
+    margin-bottom: 2rem;
+  }
+
+  &--data {
+    padding: 0 1.5rem;
+
+    h1 {
+      color: $dark-slate-grey;
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      margin-bottom: 1.25rem;
+
+      li {
+        background: url("../../assets/images/icon-list.svg") no-repeat;
+        background-position-y: 0.5rem;
+        padding: 0.5rem 0;
+        padding-left: 2.5rem;
+      }
+    }
+
+    .email-form {
+      padding: 0 1.5rem;
+
+      &--label {
+        & {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: $charcoal-grey;
+
+          &-error {
+            @extend .email-form--label;
+
+            display: none;
+            color: $tomato;
+          }
+          &-wrapper {
+            display: flex;
+            justify-content: space-between;
+          }
+        }
+      }
+
+      &--input {
+        display: block;
+        padding: 1rem 0.5rem;
+        width: 100%;
+        border-radius: 0.625rem;
+        border: 1px solid $grey;
+        margin-top: 0.5rem;
+        margin-bottom: 2rem;
+
+        &-error {
+          @extend .email-form--input;
+          border: 1px solid $tomato;
+          color: $tomato;
+          background-color: #ffe8e6;
+        }
+      }
+
+      &--btn {
+        background-color: $dark-slate-grey;
+        color: white;
+        width: 100%;
+        padding: 1rem 0;
+        border-radius: 0.625rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.success {
+  padding: 0 1.5rem;
+  align-items: center;
+  height: 50vh;
+
+  &--container {
+    img {
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: $dark-slate-grey;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      color: $dark-slate-grey;
+    }
+  }
+
+  &--email-value {
+    font-weight: 700;
+  }
+
+  &--dismiss-btn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10rem;
+    margin: 0 auto;
+    background-color: $dark-slate-grey;
+    color: white;
+    width: 80%;
+    padding: 1rem 0;
+    border-radius: 0.625rem;
+    font-weight: 700;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .hero {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: $dark-slate-grey;
+    height: 100vh;
+
+    &--wrapper {
+      background-color: white;
+      width: 70%;
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      padding: 3rem;
+      border-radius: 0.625rem;
+    }
+
+    &--illustration {
+      background: url("../../assets/images/illustration-sign-up-desktop.svg")
+        no-repeat;
+      background-size: contain;
+      height: 60vh;
+      width: 40vw;
+      max-width: 350px;
+    }
+
+    &--data {
+      padding: 0;
+      margin-right: 2rem;
+
+      h1 {
+        font-size: 3rem;
+      }
+    }
+
+    .email-form {
+      &--input {
+        width: 100%;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      &--btn:hover {
+        background: linear-gradient(to right, $tomato-light, $tomato);
+        cursor: pointer;
+        transition: background-color 1s
+          cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
+    }
+  }
+
+  .success {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: $dark-slate-grey;
+
+    &--container {
+      height: 50%;
+      width: 60%;
+      display: grid;
+      background-color: white;
+      padding: 2.5rem;
+      border-radius: 0.625rem;
+      img {
+        margin-bottom: 3rem;
+      }
+
+      h1 {
+        margin-bottom: 2rem;
+      }
+
+      p {
+        margin-bottom: 2rem;
+      }
+    }
+
+    &--dismiss-btn {
+      position: inherit;
+
+      &:hover {
+        background: linear-gradient(to right, $tomato-light, $tomato);
+        cursor: pointer;
+        transition: background-color 1s
+          cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
+    }
+  }
+}
